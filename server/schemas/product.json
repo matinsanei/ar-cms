@@ -1,0 +1,32 @@
+{
+  "uid": "api::product.product",
+  "kind": "collectionType",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product Showcase",
+    "description": "Featured storefront product showcases"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "float",
+      "required": true
+    },
+    "rating": {
+      "type": "float"
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "badge": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "documentId": "ef52664d-57fb-440e-ae86-77fb68c4cf4a",
+    "firstname": "Matin",
+    "lastname": "Dev",
+    "username": "matin@pixelstack.io",
+    "email": "matin@pixelstack.io",
+    "isActive": true,
+    "blocked": false,
+    "preferedLanguage": "en",
+    "roles": [
+      {
+        "id": 1,
+        "name": "Super Admin",
+        "code": "strapi-super-admin",
+        "description": "Super Admin",
+        "usersCount": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,25 @@
+{
+  "uid": "api::page.page",
+  "entries": [
+    {
+      "id": 1,
+      "documentId": "c28dd9c0-aebb-4160-92f1-5285bbdea301",
+      "createdAt": "2026-11-18T13:42:16.145061108+00:00",
+      "updatedAt": "2026-11-18T20:38:30.593244212+00:00",
+      "publishedAt": "2026-11-18T20:38:30.593244212+00:00",
+      "locale": "en",
+      "status": "published",
+      "slug": "my-test-page",
+      "title": "My Test Page"
+    },
+    {
+      "id": 2,
+      "documentId": "c28dd9c0-aebb-4160-92f1-5285bbdea999",
+      "createdAt": "2026-11-18T13:43:51.905226117+00:00",
+      "updatedAt": "2026-11-18T13:43:51.905226117+00:00",
+      "publishedAt": null,
+      "locale": "en",
+      "status": "draft"
+    }
+  ]
+}

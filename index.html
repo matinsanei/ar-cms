@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="robots" content="noindex" />
+    <title>AR-CMS Admin</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <script>
+      window.process = {
+        env: {
+          NODE_ENV: 'development',
+          STRAPI_ADMIN_BACKEND_URL: '',
+          STRAPI_ADMIN_AUTH_COOKIE_NAME: 'jwtToken',
+          STRAPI_ADMIN_AUTH_COOKIE_PATH: '/',
+          STRAPI_ADMIN_AUTH_COOKIE_DOMAIN: '',
+          STRAPI_TELEMETRY_DISABLED: 'true',
+        },
+        platform: 'browser',
+        version: 'v20.0.0',
+      };
+      window.global = window;
+
+      // Silence known third-party a11y & dev noise from Radix UI / Strapi
+      const _origError = console.error;
+      console.error = function(...args) {
+        if (
+          typeof args[0] === 'string' &&
+          (args[0].includes('requires a `DialogTitle`') ||
+           (args[0].includes('DialogTitle') && args[0].includes('radix-ui')))
+        ) {
+          return;
+        }
+        _origError.apply(console, args);
+      };
+
+      const _origWarn = console.warn;
+      console.warn = function(...args) {
+        if (
+          typeof args[0] === 'string' &&
+          (args[0].includes('Missing `Description`') ||
+           args[0].includes('aria-describedby') ||
+           args[0].includes('useRBAC: The first argument should be an array of permissions') ||
+           args[0].includes('React Router Future Flag Warning'))
+        ) {
+          return;
+        }
+        _origWarn.apply(console, args);
+      };
+      // Initialize theme on root immediately to avoid flash
+      try {
+        const savedTheme = localStorage.getItem('STRAPI_THEME');
+        if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {}
+    </script>
+    <style>
+      html, body, #strapi {
+        height: 100%;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Dark Mode Base Canvas */
+      html.dark, html.dark body, html.dark #strapi {
+        background-color: #0d1117;
+        color: #c9d1d9;
+      }
+
+      /* Light Mode Base Canvas */
+      html:not(.dark), html:not(.dark) body, html:not(.dark) #strapi {
+        background-color: #f6f8fa;
+        color: #1f2328;
+      }
+
+      /* Scrollbars - Dark */
+      html.dark ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      html.dark ::-webkit-scrollbar-track {
+        background: #0d1117;
+      }
+      html.dark ::-webkit-scrollbar-thumb {
+        background: #21262d;
+        border-radius: 4px;
+        border: 2px solid #0d1117;
+      }
+      html.dark ::-webkit-scrollbar-thumb:hover {
+        background: #30363d;
+      }
+
+      /* Scrollbars - Light */
+      html:not(.dark) ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      html:not(.dark) ::-webkit-scrollbar-track {
+        background: #f6f8fa;
+      }
+      html:not(.dark) ::-webkit-scrollbar-thumb {
+        background: #d0d7de;
+        border-radius: 4px;
+        border: 2px solid #f6f8fa;
+      }
+      html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+        background: #afb8c1;
+      }
+
+      /* Modals & Dropdowns - Dark */
+      html.dark div[data-state="open"][role="dialog"],
+      html.dark [data-radix-popper-content-wrapper] > div {
+        background-color: #161b22 !important;
+        border: 1px solid #30363d !important;
+        box-shadow: 0 16px 36px 0 rgba(1, 4, 9, 0.85) !important;
+      }
+
+      /* Modals & Dropdowns - Light */
+      html:not(.dark) div[data-state="open"][role="dialog"],
+      html:not(.dark) [data-radix-popper-content-wrapper] > div {
+        background-color: #ffffff !important;
+        border: 1px solid #e1e4e8 !important;
+        box-shadow: 0 16px 36px 0 rgba(0, 0, 0, 0.12) !important;
+      }
+
+      /* Clean Inputs - Dark */
+      html.dark input, html.dark textarea, html.dark select {
+        background-color: #0d1117 !important;
+        border-color: #30363d !important;
+        color: #c9d1d9 !important;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+      }
+      html.dark input:focus, html.dark textarea:focus, html.dark select:focus {
+        border-color: #8b5cf6 !important;
+        box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.3) !important;
+      }
+
+      /* Clean Inputs - Light */
+      html:not(.dark) input, html:not(.dark) textarea, html:not(.dark) select {
+        background-color: #ffffff !important;
+        border-color: #d0d7de !important;
+        color: #1f2328 !important;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out !important;
+      }
+      html:not(.dark) input:focus, html:not(.dark) textarea:focus, html:not(.dark) select:focus {
+        border-color: #7c3aed !important;
+        box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2) !important;
+      }
+
+      /* Clean Modern Navigation Active Items - No annoying side bars/borders */
+      nav a, nav a[aria-current="page"], nav a.active {
+        border: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        box-shadow: none !important;
+      }
+
+      html.dark nav a[aria-current="page"], html.dark nav a.active {
+        background-color: #21262d !important;
+        color: #f0f6fc !important;
+        border-radius: 8px !important;
+      }
+      html.dark nav a[aria-current="page"] svg,
+      html.dark nav a[aria-current="page"] svg path,
+      html.dark nav a.active svg,
+      html.dark nav a.active svg path {
+        fill: #a78bfa !important;
+        color: #a78bfa !important;
+      }
+
+      html:not(.dark) nav a[aria-current="page"], html:not(.dark) nav a.active {
+        background-color: #f3f0ff !important;
+        color: #6d28d9 !important;
+        border-radius: 8px !important;
+      }
+      html:not(.dark) nav a[aria-current="page"] svg,
+      html:not(.dark) nav a[aria-current="page"] svg path,
+      html:not(.dark) nav a.active svg,
+      html:not(.dark) nav a.active svg path {
+        fill: #7c3aed !important;
+        color: #7c3aed !important;
+      }
+
+      /* Hide Marketplace link completely from sidebar */
+      a[href*="marketplace"],
+      a[href*="market.strapi.io"],
+      a[aria-label*="Marketplace"],
+      button[aria-label*="Marketplace"],
+      [data-testid*="marketplace"] {
+        display: none !important;
+      }
+
+      /* Hide external Strapi promotional cards & upgrade banners */
+      a[href*="strapi.io/pricing"],
+      a[href*="billing.strapi.io"],
+      a[href*="discord.strapi.io"],
+      a[href*="github.com/strapi/strapi"] {
+        display: none !important;
+      }
+
+      /* Logo transparency and containment */
+      nav img,
+      header img {
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="strapi"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

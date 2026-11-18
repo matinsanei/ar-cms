@@ -1,0 +1,13 @@
+[
+  {
+    "id": "bc3cd197-0f39-4d65-bd90-8234ec678d5a",
+    "name": "Telegram Notifier",
+    "url": "https://api.telegram.org/bot123/sendMessage",
+    "headers": {},
+    "events": [
+      "entry.create",
+      "entry.update"
+    ],
+    "isEnabled": true
+  }
+]

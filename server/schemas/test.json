@@ -1,0 +1,26 @@
+{
+  "uid": "api::test.test",
+  "kind": "collectionType",
+  "info": {
+    "singularName": "test",
+    "pluralName": "tests",
+    "displayName": "test"
+  },
+  "attributes": {
+    "qweda": {
+      "type": "uid",
+      "required": false,
+      "unique": false
+    },
+    "ghjh": {
+      "type": "date",
+      "required": false,
+      "unique": false
+    },
+    "gbh": {
+      "type": "blocks",
+      "required": false,
+      "unique": false
+    }
+  }
+}

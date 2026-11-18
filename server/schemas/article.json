@@ -1,0 +1,25 @@
+{
+  "uid": "api::article.article",
+  "kind": "collectionType",
+  "info": {
+    "singularName": "article",
+    "pluralName": "articles",
+    "displayName": "Article",
+    "description": "News articles and blog posts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "content": {
+      "type": "text",
+      "required": false,
+      "unique": false
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    }
+  }
+}

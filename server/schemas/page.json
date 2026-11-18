@@ -1,0 +1,30 @@
+{
+  "uid": "api::page.page",
+  "kind": "collectionType",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Page",
+    "description": "Storefront CMS landing and layout pages"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "blocks": {
+      "type": "json"
+    },
+    "seo": {
+      "type": "json"
+    }
+  }
+}

@@ -2,7 +2,7 @@
 set -e
 
 echo "=========================================================="
-echo "  🚀 Starting Zenith CMS (Strapi Admin + Rust Unified Runtime)"
+echo "  🚀 Starting Matin CMS (Strapi Admin + Rust Unified Runtime)"
 echo "=========================================================="
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

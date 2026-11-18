@@ -30,7 +30,7 @@ export const App: React.FC = () => {
       <div className="h-screen w-screen flex items-center justify-center bg-[#212134] text-white">
         <div className="text-center space-y-3">
           <div className="w-8 h-8 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin mx-auto" />
-          <p className="text-xs font-mono tracking-wider text-indigo-300">ZENITH ENGINE BOOTSTRAP...</p>
+          <p className="text-xs font-mono tracking-wider text-indigo-300">MATIN CMS ENGINE BOOTSTRAP...</p>
         </div>
       </div>
     );

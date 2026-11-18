@@ -425,7 +425,7 @@ async fn main() -> anyhow::Result<()> {
     };
     fs::create_dir_all(&data_dir)?;
 
-    info!("Zenith CMS Unified Runtime Engine starting...");
+    info!("Matin CMS Unified Runtime Engine starting...");
     info!("Schemas storage directory: {:?}", schemas_dir);
     info!("Data persistence directory: {:?}", data_dir);
 
@@ -564,7 +564,7 @@ async fn main() -> anyhow::Result<()> {
     let port = 8088;
     let addr = format!("0.0.0.0:{}", port);
     let listener = tokio::net::TcpListener::bind(&addr).await?;
-    info!("🚀 Zenith CMS Engine listening on http://{}", addr);
+    info!("🚀 Matin CMS Engine listening on http://{}", addr);
     info!("👉 Ready for instant hot-reload schema updates with 0-build & 0-restart!");
 
     axum::serve(listener, app).await?;
@@ -770,7 +770,7 @@ async fn admin_reset_password() -> impl IntoResponse {
 }
 
 async fn admin_access_token() -> impl IntoResponse {
-    Json(json!({ "data": { "token": "zenith-jwt-token-admin" } }))
+    Json(json!({ "data": { "token": "matin-cms-jwt-token-admin" } }))
 }
 
 // ========================
@@ -822,7 +822,7 @@ async fn admin_register_admin(
 
     (StatusCode::CREATED, Json(json!({
         "data": {
-            "token": "zenith-jwt-token-admin",
+            "token": "matin-cms-jwt-token-admin",
             "user": user
         }
     })))
@@ -862,7 +862,7 @@ async fn admin_register_user(
 
     (StatusCode::CREATED, Json(json!({
         "data": {
-            "token": "zenith-jwt-token-user",
+            "token": "matin-cms-jwt-token-user",
             "user": user
         }
     })))
@@ -905,7 +905,7 @@ async fn admin_login(
 
     (StatusCode::OK, Json(json!({
         "data": {
-            "token": "zenith-jwt-token-admin",
+            "token": "matin-cms-jwt-token-admin",
             "user": user
         }
     }))).into_response()
@@ -914,7 +914,7 @@ async fn admin_login(
 async fn admin_renew_token() -> impl IntoResponse {
     Json(json!({
         "data": {
-            "token": "zenith-jwt-token-admin"
+            "token": "matin-cms-jwt-token-admin"
         }
     }))
 }
@@ -964,7 +964,7 @@ async fn admin_users_me_update(
     Json(json!({
         "data": {
             "id": 1,
-            "documentId": "zenith-admin-01",
+            "documentId": "matin-cms-admin-01",
             "firstname": "Admin",
             "lastname": "Superuser",
             "username": "admin",
@@ -1499,7 +1499,7 @@ async fn admin_create_api_token(
     let name = payload.get("name").and_then(|v| v.as_str()).unwrap_or("API Token");
     let desc = payload.get("description").and_then(|v| v.as_str()).unwrap_or("");
     let token_type = payload.get("type").and_then(|v| v.as_str()).unwrap_or("full-access");
-    let access_key = format!("zenith_{}_{}", uuid::Uuid::new_v4().simple(), uuid::Uuid::new_v4().simple());
+    let access_key = format!("matin_{}_{}", uuid::Uuid::new_v4().simple(), uuid::Uuid::new_v4().simple());
 
     let token = ApiToken {
         id: next_id,
@@ -1571,7 +1571,7 @@ async fn admin_regenerate_api_token(
 ) -> impl IntoResponse {
     let mut tokens = state.api_tokens.write().await;
     let token = if let Some(t) = tokens.iter_mut().find(|t| t.id.to_string() == id || t.name == id) {
-        t.access_key = format!("zenith_{}_{}", uuid::Uuid::new_v4().simple(), uuid::Uuid::new_v4().simple());
+        t.access_key = format!("matin_{}_{}", uuid::Uuid::new_v4().simple(), uuid::Uuid::new_v4().simple());
         t.updated_at = chrono::Utc::now().to_rfc3339();
         t.clone()
     } else {
@@ -1582,7 +1582,7 @@ async fn admin_regenerate_api_token(
             name: format!("API Token {}", num_id),
             description: "".to_string(),
             token_type: "full-access".to_string(),
-            access_key: format!("zenith_{}_{}", uuid::Uuid::new_v4().simple(), uuid::Uuid::new_v4().simple()),
+            access_key: format!("matin_{}_{}", uuid::Uuid::new_v4().simple(), uuid::Uuid::new_v4().simple()),
             created_at: now.clone(),
             updated_at: now,
             last_used_at: None,

@@ -1,6 +1,6 @@
 <div align="center">
 
-# ⚡ AR-CMS (Zenith Core)
+# ⚡ Matin CMS (AR-CMS Core)
 
 ### The Ultra-Fast, Zero-Rebuild Headless CMS Engine Engineered in Rust with Full Strapi 5 Ecosystem Drop-in Compatibility
 
@@ -40,7 +40,7 @@ Traditional Node.js-based CMS platforms suffer from fundamental architectural bo
 
 ## 📊 Benchmark Comparison
 
-| Metric | Traditional Strapi 5 (Node.js) | AR-CMS (Zenith Core Rust) | Improvement |
+| Metric | Traditional Strapi 5 (Node.js) | Matin CMS (Rust Engine) | Improvement |
 | :--- | :--- | :--- | :--- |
 | **RAM Footprint (Idle)** | 380 MB – 650 MB | **~18 MB** | **95% Reduction** |
 | **Cold Start Time** | 6,500 ms – 14,000 ms | **< 45 ms** | **150x Faster** |
@@ -178,7 +178,7 @@ pnpm vitest run tests/strapi-contracts.test.ts
 Output:
 ```text
  ✓ tests/strapi-contracts.test.ts (51 tests) 110ms
-   ✓ Zenith CMS / Strapi 5 Official API Contracts Suite (51)
+   ✓ Matin CMS / Strapi 5 Official API Contracts Suite (51)
      ✓ Admin Setup & Auth Protocols (5)
      ✓ Settings & System Information Protocols (5)
      ✓ Webhooks Management (4)

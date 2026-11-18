@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll } from 'vitest';
 
 const BACKEND_URL = 'http://127.0.0.1:8088';
 
-describe('Zenith CMS / Strapi 5 Official API Contracts Suite', () => {
+describe('Matin CMS / Strapi 5 Official API Contracts Suite', () => {
   let createdWebhookId = '';
   let createdApiTokenId = 0;
   let createdAdminTokenId = 0;

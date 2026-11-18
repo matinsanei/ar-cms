@@ -30,7 +30,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ contentTypes }) => {
           <Sparkles className="w-5 h-5 text-white" />
         </div>
         <div>
-          <h1 className="font-bold text-sm tracking-wide text-white">ZENITH CMS</h1>
+          <h1 className="font-bold text-sm tracking-wide text-white">MATIN CMS</h1>
           <p className="text-[10px] text-indigo-300 font-mono tracking-wider">UNIFIED RUNTIME</p>
         </div>
       </div>

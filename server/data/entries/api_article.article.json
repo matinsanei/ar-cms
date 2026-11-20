@@ -1,0 +1,51 @@
+{
+  "uid": "api::article.article",
+  "entries": [
+    {
+      "id": 1,
+      "documentId": "1754f665-c993-4b60-b2c3-26ee63770889",
+      "createdAt": "2026-11-20T21:03:17.470819768+00:00",
+      "updatedAt": "2026-11-20T21:03:18.206338501+00:00",
+      "publishedAt": null,
+      "locale": "en",
+      "status": "draft",
+      "isFeatured": true,
+      "content": "Axum provides high concurrency with Tokio...",
+      "title": "Deep Dive into Rust Axum Web Engine",
+      "slug": "rust-axum-web-engine",
+      "views": 3200
+    },
+    {
+      "id": 2,
+      "documentId": "random-draft-uuid-1795208597863",
+      "createdAt": "2026-11-20T21:03:17.891361111+00:00",
+      "updatedAt": "2026-11-20T21:03:17.891361111+00:00",
+      "publishedAt": null,
+      "locale": "en",
+      "status": "draft"
+    },
+    {
+      "id": 3,
+      "documentId": "80e8f427-207c-4381-9d45-9e054b4049f3",
+      "createdAt": "2026-11-20T21:04:23.337057128+00:00",
+      "updatedAt": "2026-11-20T21:04:23.403814700+00:00",
+      "publishedAt": null,
+      "locale": "en",
+      "status": "draft",
+      "views": 3200,
+      "title": "Deep Dive into Rust Axum Web Engine",
+      "slug": "rust-axum-web-engine",
+      "isFeatured": true,
+      "content": "Axum provides high concurrency with Tokio..."
+    },
+    {
+      "id": 4,
+      "documentId": "random-draft-uuid-1795208663367",
+      "createdAt": "2026-11-20T21:04:23.368438345+00:00",
+      "updatedAt": "2026-11-20T21:04:23.368438345+00:00",
+      "publishedAt": null,
+      "locale": "en",
+      "status": "draft"
+    }
+  ]
+}

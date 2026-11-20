@@ -26,3 +26,11 @@ pnpm-debug.log*
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Database & runtime uploads
+*.db
+*.db-wal
+*.db-shm
+server/data/*.db*
+server/data/uploads/*
+!server/data/uploads/.gitkeep
